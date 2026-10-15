@@ -155,7 +155,41 @@ bash scripts of some simple problems
 | **Functions** | `function_name () { commands; }` |
 | **Exit Status** | `echo $?` (*0 means success, other numbers mean error) |
 
-## 12. Useful Keyboard Shortcuts (Added*)
+## 12. `xxd` Hexadecimal Dump
+
+`xxd` displays files as hexadecimal and ASCII data. It is useful for inspecting binary files, debugging file formats, and converting hexadecimal text.
+
+| Command | Description |
+| :--- | :--- |
+| `xxd [file]` | Display a hexadecimal dump with offsets, hex bytes, and ASCII text |
+| `xxd -g 1 [file]` | Group output into single-byte values |
+| `xxd -g 2 [file]` | Group output into two-byte values |
+| `xxd -g 4 [file]` | Group output into four-byte values |
+| `xxd -c 16 [file]` | Display 16 bytes per output line |
+| `xxd -l 64 [file]` | Display only the first 64 bytes |
+| `xxd -s 128 [file]` | Start the dump at byte offset 128 |
+| `xxd -r dump.hex output.bin` | Reverse a hexadecimal dump into a binary file |
+| `xxd -p [file]` | Display only continuous hexadecimal characters |
+| `xxd -p [file] \| tr -d '\n'` | Produce one continuous hexadecimal string |
+| `printf 'Hello' \| xxd` | Dump data received from standard input |
+
+### Common Examples
+
+```bash
+# Inspect the first 64 bytes of a file
+xxd -l 64 file.bin
+
+# View a file as a plain hexadecimal string
+xxd -p file.bin
+
+# Inspect bytes beginning at offset 0x100
+xxd -s 0x100 -l 64 file.bin
+
+# Convert hexadecimal text back to binary data
+xxd -r -p input.hex output.bin
+```
+
+## 13. Useful Keyboard Shortcuts (Added*)
 | Shortcut | Action |
 | :--- | :--- |
 | `Tab` | *Auto-complete file/folder names |
